@@ -1,6 +1,6 @@
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 import Halcyon from '../assets/Halcyon.png'
 const Portfolio = () => {
   const projects = [
@@ -92,9 +92,9 @@ const Portfolio = () => {
                       <ExternalLink className="w-4 h-4 mr-1" />
                       View
                     </Button>
-                    <Button size="sm" variant="secondary" className="bg-white/20 backdrop-blur-sm text-white border-white/20 hover:bg-white/30">
+                    {/* <Button size="sm" variant="secondary" className="bg-white/20 backdrop-blur-sm text-white border-white/20 hover:bg-white/30">
                       <Github className="w-4 h-4" />
-                    </Button>
+                    </Button> */}
                   </div>
                 </div>
               </div>
