@@ -24,16 +24,66 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
+    try {
+      const payload = {
+        access_key: 'b28e7177-60ca-4dd6-8325-ed64e698c0bc',
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: `
+Contact Details:
+Name: ${formData.name}
+Email: ${formData.email}
+Project Type: ${formData.subject}
+
+Message:
+${formData.message}
+
+---
+This message was sent from ZephyrWebStudio contact form.
+Time: ${new Date().toLocaleString()}
+  `,
+        from_name: 'ZephyrWebStudio Contact Form',
+        redirect: false,
+        'h:Reply-To': formData.email,
+        'h:X-Priority': '1',
+        'h:Importance': 'high',
+        template: 'basic',
+        timestamp: new Date().toISOString(),
+        user_agent: navigator.userAgent,
+        source: 'ZephyrWebStudio Website Contact Form'
+      };
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 2000);
+      const result = await response.json();
+      if (result.success) {
+        toast({
+          title: "Message sent successfully!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        console.log("Form sent successfully!");
+      } else {
+        throw new Error(result.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or contact us directly via email.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -156,7 +206,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
                       Project Type
@@ -187,8 +237,8 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     disabled={isSubmitting}
                     className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg py-6"
                   >
