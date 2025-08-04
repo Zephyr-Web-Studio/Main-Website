@@ -58,25 +58,25 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
-            <ExternalLink className="w-5 h-5 text-primary" />
-            <span className="text-sm font-medium text-primary">Our Work</span>
+    <section id="portfolio" className="py-16 sm:py-20 bg-background">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16 animate-fade-in">
+          <div className="inline-flex items-center space-x-2 bg-primary/10 px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6">
+            <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+            <span className="text-xs sm:text-sm font-medium text-primary">Our Work</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 px-2">
             Featured Projects
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-2">
             Discover some of our recent work and see how we've helped businesses achieve their digital goals.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="group overflow-hidden hover:shadow-card transition-all duration-300 hover:-translate-y-2 bg-gradient-card border-0 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -84,12 +84,12 @@ const Portfolio = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-40 sm:h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 flex space-x-2">
-                    <Button size="sm" variant="secondary" className="bg-white/20 backdrop-blur-sm text-white border-white/20 hover:bg-white/30" onClick = {() => handleViewProject(project.url)}>
-                      <ExternalLink className="w-4 h-4 mr-1" />
+                  <div className="p-3 sm:p-4 flex space-x-2">
+                    <Button size="sm" variant="secondary" className="bg-white/20 backdrop-blur-sm text-white border-white/20 hover:bg-white/30 text-xs sm:text-sm" onClick = {() => handleViewProject(project.url)}>
+                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                       View
                     </Button>
                     {/* <Button size="sm" variant="secondary" className="bg-white/20 backdrop-blur-sm text-white border-white/20 hover:bg-white/30">
@@ -98,19 +98,19 @@ const Portfolio = () => {
                   </div>
                 </div>
               </div>
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between mb-3">
+              <CardContent className="p-4 sm:p-6">
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
                   <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full">
                     {project.category}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1 sm:gap-2">
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
@@ -125,7 +125,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+        {/* <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: "0.6s" }}>
           <p className="text-lg text-muted-foreground mb-6">
             Want to see more of our work?
           </p>
@@ -133,7 +133,7 @@ const Portfolio = () => {
             View Full Portfolio
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
-        </div>
+        </div> */}
       </div>
     </section>
   );
