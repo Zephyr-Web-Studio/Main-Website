@@ -52,11 +52,11 @@ const Hero = () => {
               <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">Projects Delivered</div>
             </div>
             <div className="text-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">99%</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">100%</div>
               <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">Client Satisfaction</div>
             </div>
             <div className="text-center animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">1+</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">2+</div>
               <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">Years Experience</div>
             </div>
             <div className="text-center animate-fade-in" style={{ animationDelay: "0.8s" }}>

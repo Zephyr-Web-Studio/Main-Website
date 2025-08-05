@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Menu, X } from "lucide-react";
-import logo from '../assets/favicon.png';
+import logo from '../assets/Zephyr.png';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -9,7 +9,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2 sm:space-x-3">
-          <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-md flex items-center justify-center">
+          <div className="w-12 h-12 sm:w-10 sm:h-10 rounded-md flex items-center justify-center">
             <a href=""><img src={logo} className="w-full h-full object-contain" alt="Zephyr Web Studio Logo"/></a>
           </div>
           <span className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
