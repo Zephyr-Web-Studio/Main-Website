@@ -2,6 +2,7 @@ import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import Halcyon from '../assets/Halcyon.png'
+import Health from '../assets/health.png'
 const Portfolio = () => {
   const projects = [
     {
@@ -15,10 +16,10 @@ const Portfolio = () => {
     {
       title: "Healthcare Portal",
       description: "Patient management system with appointment scheduling and telemedicine features.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?auto=format&fit=crop&w=800&h=600",
+      image: Health,
       tags: ["Next.js", "TypeScript", "PostgreSQL", "AWS"],
       category: "Healthcare",
-      url:"https://halcyonsit.in",
+      url:"http://shree-nathjii-pet-clinic.vercel.app",
     },
     {
       title: "Finance Dashboard",
