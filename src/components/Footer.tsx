@@ -23,7 +23,7 @@ const Footer = () => {
               <a href="https://twitter.com/zephyrwebstudio" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors" aria-label="Twitter">
                 <Twitter className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              <a href="https://linkedin.com/company/zephyrwebstudio" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/zephyr-web-studio-081755379/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a href="https://instagram.com/zephyrwebstudio" target="_blank" rel="noopener noreferrer" className="w-9 h-9 sm:w-10 sm:h-10 bg-primary/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors" aria-label="Instagram">
