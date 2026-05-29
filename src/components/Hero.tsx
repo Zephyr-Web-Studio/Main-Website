@@ -1,81 +1,121 @@
 import { Button } from "../components/ui/button";
-import { ArrowRight, Sparkles, Zap, Globe } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-hero relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-16 sm:top-20 left-4 sm:left-10 w-12 h-12 sm:w-20 sm:h-20 bg-primary/10 rounded-full animate-float"></div>
-        <div className="absolute top-32 sm:top-40 right-4 sm:right-20 w-20 h-20 sm:w-32 sm:h-32 bg-accent/10 rounded-full animate-float" style={{ animationDelay: "1s" }}></div>
-        <div className="absolute bottom-16 sm:bottom-20 left-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-full animate-float" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute top-1/2 right-4 sm:right-10 w-16 h-16 sm:w-24 sm:h-24 bg-accent/15 rounded-full animate-float" style={{ animationDelay: "0.5s" }}></div>
+    <section className="min-h-screen pt-28 pb-16 flex flex-col items-center justify-between bg-zephyr-dark relative overflow-hidden">
+      {/* Background grain overlay */}
+      <div className="absolute inset-0 bg-zephyr-texture pointer-events-none opacity-20 z-0"></div>
+
+      {/* Floating Animated Neon Particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <motion.div 
+          className="absolute top-[20%] left-[10%] w-32 h-32 bg-primary/10 rounded-full blur-[80px]"
+          animate={{
+            x: [0, 40, -20, 0],
+            y: [0, -50, 30, 0],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-[30%] right-[15%] w-48 h-48 bg-primary/5 rounded-full blur-[100px]"
+          animate={{
+            x: [0, -60, 30, 0],
+            y: [0, 40, -50, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+        />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center relative z-10">
-        <div className="max-w-4xl mx-auto animate-fade-in">
-          <div className="flex items-center justify-center mb-4 sm:mb-6">
-            <div className="flex items-center space-x-2 bg-primary/10 px-3 sm:px-4 py-2 rounded-full">
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
-              <span className="text-xs sm:text-sm font-medium text-primary">Professional Web Development</span>
-            </div>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
-            Crafting Digital
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent block">
-              Experiences
+      <div className="container-responsive flex-1 flex flex-col items-center justify-center text-center relative z-10 px-4 py-6">
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
+          
+          {/* Zephyr Stylized Logo */}
+          <motion.div 
+            className="flex flex-col items-center mb-6 sm:mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 100, 
+              damping: 15,
+              delay: 0.1
+            }}
+          >
+            <motion.div 
+              className="w-16 h-16 mb-2 text-primary drop-shadow-[0_0_15px_rgba(163,230,53,0.4)] flex items-center justify-center cursor-pointer"
+              whileHover={{ scale: 1.1, rotate: 360 }}
+              transition={{ type: "spring", stiffness: 200, damping: 10 }}
+            >
+              <svg className="w-14 h-14" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 20H90L50 60H90L30 100V80L70 40H30V20Z" fill="currentColor"/>
+              </svg>
+            </motion.div>
+            <span className="text-white text-sm sm:text-base font-black tracking-[0.25em] uppercase">
+              Zephyr
             </span>
-            That Convert
-          </h1>
+            <span className="text-primary text-[9px] sm:text-[10px] font-bold tracking-[0.35em] uppercase opacity-80 -mt-0.5">
+              web studio
+            </span>
+          </motion.div>
 
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed px-2">
-            Transform your vision into stunning, high-performance websites that captivate your audience and drive results. Modern, responsive, and built for success.
-          </p>
+          {/* Headline */}
+          <motion.h1 
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 sm:mb-8 leading-tight tracking-tight px-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+          >
+            Looking to Upgrade <br className="hidden sm:inline" />
+            Your <span className="text-primary font-black drop-shadow-[0_0_25px_rgba(163,230,53,0.25)]">Website?</span>
+          </motion.h1>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 px-4">
-            <Button size="lg" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 bg-primary hover:bg-primary/90 shadow-glow animate-glow" asChild>
+          {/* Pill Button */}
+          <motion.div 
+            className="mb-10 sm:mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
+          >
+            <Button 
+              size="lg" 
+              className="text-sm sm:text-lg px-8 sm:px-10 py-5 sm:py-7 rounded-full bg-primary hover:bg-primary/95 text-black font-extrabold shadow-glow animate-neon-glow hover:scale-105 active:scale-95 transition-all duration-300 border-none touch-target"
+              asChild
+            >
               <a href="#contact">
-                <span>Start Your Project</span>
-                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                Get Free Consultation Today!
               </a>
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 border-white/20 text-black" asChild>
-              <a href="#portfolio">View Our Work</a>
-            </Button>
-          </div>
+          </motion.div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 px-4">
-            <div className="text-center animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">40+</div>
-              <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">Projects Delivered</div>
-            </div>
-            <div className="text-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">100%</div>
-              <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">Client Satisfaction</div>
-            </div>
-            <div className="text-center animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">2+</div>
-              <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">Years Experience</div>
-            </div>
-            <div className="text-center animate-fade-in" style={{ animationDelay: "0.8s" }}>
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 sm:mb-2">24/7</div>
-              <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wide">Support Available</div>
-            </div>
-          </div>
-        </div>
+          {/* Black & White Hero Image */}
+          <motion.div 
+            className="w-full max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-2xl mt-2 sm:mt-4 relative overflow-hidden"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 50, damping: 15, delay: 0.7 }}
+          >
+            <div className="absolute inset-x-0 bottom-0 h-24 sm:h-28 bg-gradient-to-t from-[#070708] to-transparent z-10 pointer-events-none"></div>
+            <img 
+              src="/hero-woman.png" 
+              alt="Zephyr Web Studio upgrade" 
+              className="w-full h-auto object-cover max-h-[300px] sm:max-h-[450px] mx-auto filter grayscale contrast-125 object-top select-none"
+              style={{
+                maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)'
+              }}
+            />
+          </motion.div>
 
-        {/* Floating tech icons - hidden on mobile */}
-        <div className="hidden sm:block absolute bottom-10 left-4 sm:left-10 animate-float">
-          <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-lg">
-            <Globe className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
-          </div>
-        </div>
-        <div className="hidden sm:block absolute bottom-20 right-4 sm:right-10 animate-float" style={{ animationDelay: "1s" }}>
-          <div className="bg-white/10 backdrop-blur-sm p-2 sm:p-3 rounded-lg">
-            <Zap className="w-4 h-4 sm:w-6 sm:h-6 text-accent" />
-          </div>
         </div>
       </div>
     </section>
