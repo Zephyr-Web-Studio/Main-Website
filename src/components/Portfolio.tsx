@@ -1,58 +1,30 @@
-import { Card, CardContent } from "../components/ui/card";
+import { CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import Halcyon from '../assets/Halcyon.png';
-import Health from '../assets/health.png';
+import SoaringEagles from '../assets/soaring_eagles.png';
 
 const projects = [
   {
     title: "College Fest Website",
-    description: "Developed a secure, beautiful high-performance FullStack Website for a college fest.",
+    client: "Halcyon SIT",
+    description: "Designed and engineered a high-velocity full-stack website for a prominent engineering college fest. Built with user registration flows, event schedule details, and secure transaction checks.",
     image: Halcyon,
-    tags: ["React", "Node.js", "Stripe", "MongoDB"],
-    category: "Full Stack",
+    tags: ["React", "Node.js", "Stripe", "MongoDB", "Tailwind CSS"],
+    category: "Web Development",
+    results: "5,000+ registrations • 99.9% Uptime",
     url: "https://halcyonsit.in"
   },
   {
-    title: "Healthcare Portal",
-    description: "Patient management system with appointment scheduling and telemedicine features.",
-    image: Health,
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "AWS"],
-    category: "Healthcare",
-    url: "http://shree-nathjii-pet-clinic.vercel.app"
-  },
-  {
-    title: "Finance Dashboard",
-    description: "Real-time financial analytics platform with interactive charts and reporting.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&h=600",
-    tags: ["React", "D3.js", "Python", "Redis"],
-    category: "Fintech",
-    url: "https://halcyonsit.in"
-  },
-  {
-    title: "Restaurant Chain App",
-    description: "Multi-location restaurant management with online ordering and delivery tracking.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&h=600",
-    tags: ["React Native", "Firebase", "Stripe", "Maps API"],
-    category: "Mobile App",
-    url: "https://halcyonsit.in"
-  },
-  {
-    title: "Educational Platform",
-    description: "Learning management system with video streaming and progress tracking.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&h=600",
-    tags: ["Vue.js", "Laravel", "MySQL", "Video.js"],
-    category: "Education",
-    url: "https://halcyonsit.in"
-  },
-  {
-    title: "Real Estate Portal",
-    description: "Property listing platform with virtual tours and mortgage calculator.",
-    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&h=600",
-    tags: ["React", "Express", "MongoDB", "3D.js"],
-    category: "Real Estate",
-    url: "https://halcyonsit.in"
+    title: "Official UAV Club Website",
+    client: "Soaring Eagles SIT",
+    description: "Designed and engineered the official web portal for SIT's premier aero-design and UAV robotics team. Features competition event logs, aeromodelling galleries, and interactive recruitment intake tools.",
+    image: SoaringEagles,
+    tags: ["React", "TypeScript", "Vite", "Framer Motion", "Tailwind CSS"],
+    category: "Web Development",
+    results: "Official UAV Portal • 100% Digital Intake",
+    url: "https://soaringeagles.team"
   }
 ];
 
@@ -136,17 +108,17 @@ const Portfolio = () => {
           </motion.h2>
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid (Centered 2-column layout for 2 real projects) */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16 sm:mb-24"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16 sm:mb-24"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
-              key={index}
+              key={project.title}
               variants={cardVariants}
               whileHover={{ y: -6, scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -165,7 +137,10 @@ const Portfolio = () => {
                     <Button 
                       size="sm" 
                       className="bg-primary text-black hover:bg-primary/95 font-black border-none touch-target"
-                      onClick={() => handleViewProject(project.url)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleViewProject(project.url);
+                      }}
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Live Preview
@@ -176,20 +151,30 @@ const Portfolio = () => {
 
               <CardContent className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center mb-3">
+                  <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                     <span className="text-[10px] font-bold text-primary bg-primary/10 border border-primary/20 px-3 py-1 rounded-full uppercase tracking-wider">
                       {project.category}
                     </span>
+                    <span className="text-[9px] font-bold text-white/40 tracking-wider uppercase">
+                      Client: {project.client}
+                    </span>
                   </div>
+
                   <h3 className="text-xl sm:text-2xl font-black text-white mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
+                  
+                  {/* Key Results Badge */}
+                  <div className="mb-4 text-[11px] font-extrabold text-primary uppercase tracking-widest bg-primary/5 border border-primary/10 py-1.5 px-3 rounded-lg inline-block">
+                    🏆 {project.results}
+                  </div>
+
                   <p className="text-xs sm:text-sm text-white/70 mb-5 leading-relaxed">
                     {project.description}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5">
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}

@@ -209,7 +209,13 @@ Time: ${new Date().toLocaleString()}
                   Speak directly with our team about your project.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-0">
+              <CardContent className="p-0 flex flex-col space-y-2">
+                <a href="tel:+918549840238" className="text-primary font-bold hover:underline text-xs sm:text-base touch-target inline-block">
+                  +91 85498 40238
+                </a>
+                <a href="tel:+917209333695" className="text-primary font-bold hover:underline text-xs sm:text-base touch-target inline-block">
+                  +91 72093 33695
+                </a>
                 <a href="tel:+917050218002" className="text-primary font-bold hover:underline text-xs sm:text-base touch-target inline-block">
                   +91 7050 218002
                 </a>
@@ -228,7 +234,7 @@ Time: ${new Date().toLocaleString()}
                 </div>
                 <CardTitle className="text-xl font-extrabold text-white">Business Hours</CardTitle>
                 <CardDescription className="text-white/60 mt-2 font-medium text-xs sm:text-sm">
-                  Monday - Saturday: 9:00 AM - 6:00 PM EST
+                  Monday - Saturday: 9:00 AM - 6:00 PM IST
                 </CardDescription>
               </CardHeader>
             </motion.div>

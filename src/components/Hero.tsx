@@ -70,7 +70,7 @@ const Hero = () => {
 
           {/* Headline */}
           <motion.h1 
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 sm:mb-8 leading-tight tracking-tight px-2"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-white mb-4 sm:mb-6 leading-tight tracking-tight px-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
@@ -79,20 +79,40 @@ const Hero = () => {
             Your <span className="text-primary font-black drop-shadow-[0_0_25px_rgba(163,230,53,0.25)]">Website?</span>
           </motion.h1>
 
-          {/* Pill Button */}
+          {/* Subheadline */}
+          <motion.p
+            className="text-white/70 text-sm sm:text-lg md:text-xl max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+          >
+            Zephyr Web Studio designs and develops high-performance websites and mobile apps. We blend cutting-edge technology with premium visual aesthetics to help your brand command attention.
+          </motion.p>
+
+          {/* Dual CTAs */}
           <motion.div 
-            className="mb-10 sm:mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
           >
             <Button 
               size="lg" 
-              className="text-sm sm:text-lg px-8 sm:px-10 py-5 sm:py-7 rounded-full bg-primary hover:bg-primary/95 text-black font-extrabold shadow-glow animate-neon-glow hover:scale-105 active:scale-95 transition-all duration-300 border-none touch-target"
+              className="w-full sm:w-auto text-sm sm:text-base px-8 sm:px-10 py-5 sm:py-7 rounded-full bg-primary hover:bg-primary/95 text-black font-extrabold shadow-glow animate-neon-glow hover:scale-105 active:scale-95 transition-all duration-300 border-none touch-target"
               asChild
             >
               <a href="#contact">
-                Get Free Consultation Today!
+                Get Free Consultation
+              </a>
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="w-full sm:w-auto text-sm sm:text-base px-8 sm:px-10 py-5 sm:py-7 rounded-full border-white/20 hover:border-primary text-white hover:text-primary bg-transparent hover:bg-white/5 font-extrabold hover:scale-105 active:scale-95 transition-all duration-300 touch-target"
+              asChild
+            >
+              <a href="#portfolio">
+                View Case Studies
               </a>
             </Button>
           </motion.div>

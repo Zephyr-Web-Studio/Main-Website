@@ -1,73 +1,80 @@
 import { motion } from "framer-motion";
+import { Paintbrush, Search, Smartphone, FileText, PhoneCall, Image, Cloud, LifeBuoy } from "lucide-react";
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 85,
-      damping: 15,
-      delay: i * 0.15
-    }
-  })
-};
+const capabilitiesList = [
+  {
+    icon: Paintbrush,
+    title: "UI/UX Design",
+    description: "Bespoke themes, wireframing, and custom interfaces aligned with your brand identity."
+  },
+  {
+    icon: Search,
+    title: "SEO Optimization",
+    description: "Semantic coding structures and meta-tag optimization for search engines."
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Optimization",
+    description: "Fluid responsive designs ensuring a premium experience on phones, tablets, and desktop."
+  },
+  {
+    icon: FileText,
+    title: "Interactive Forms",
+    description: "Contact forms, customer inquiry flows, and custom admission intakes."
+  },
+  {
+    icon: PhoneCall,
+    title: "Voice & Video Call",
+    description: "High-fidelity in-app voice calling and secure real-time video communication."
+  },
+  {
+    icon: Image,
+    title: "Media Galleries",
+    description: "Premium banner sliders, custom image grids, lightboxes, and video integrations."
+  },
+  {
+    icon: Cloud,
+    title: "AWS Integration",
+    description: "Setup of AWS hosting, secure cloud databases, and scalable file storage systems."
+  },
+  {
+    icon: LifeBuoy,
+    title: "1-Year Support",
+    description: "One year of comprehensive technical support and layout corrections included."
+  }
+];
 
-const listVariants = {
+const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: {
       staggerChildren: 0.08,
-      delayChildren: 0.2
+      delayChildren: 0.1
     }
   }
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -10 },
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.96 },
   show: { 
     opacity: 1, 
-    x: 0,
-    transition: { type: "spring", stiffness: 120, damping: 12 }
+    y: 0, 
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 85,
+      damping: 15
+    }
   }
 };
 
 const Features = () => {
-  const basicFeatures = [
-    "Professional Designing",
-    "Enquiry Form",
-    "Social Media Icons",
-    "Click to Call",
-    "Click to WhatsApp",
-    "Google Map",
-    "Visitor Counter",
-    "Slider Banner",
-    "Pop-Up Form",
-    "Image and Video Gallery",
-    "Animated Headlines",
-    "Client Review"
-  ];
-
-  const technicalFeatures = [
-    "Professional Theme",
-    "SEO-Friendly Website",
-    "Mobile-Friendly Website",
-    "Free Webspace (Hosting)",
-    "Easy Navigation"
-  ];
-
-  const supportFeatures = [
-    "Basic Content Writing",
-    "Basic Graphics Designing",
-    "One Year Full Technical Support"
-  ];
-
   return (
     <section id="features" className="py-24 bg-zephyr-dark relative overflow-hidden">
-      <div className="container-responsive px-4 sm:px-12 lg:px-20">
+      <div className="absolute inset-0 bg-zephyr-texture pointer-events-none opacity-20 z-0"></div>
+
+      <div className="container-responsive relative z-10 px-4 sm:px-12 lg:px-20">
         
         {/* Top site URL */}
         <div className="mb-8 sm:mb-10 text-left">
@@ -113,97 +120,39 @@ const Features = () => {
           </motion.h2>
         </div>
 
-        {/* Features Cards Grid (Three columns) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16 sm:mb-24 items-stretch">
-          
-          {/* Card 1: Basic Features (Lime Green) */}
-          <motion.div 
-            className="bg-primary rounded-[2.5rem] p-8 sm:p-10 flex flex-col hover:shadow-[0_20px_45px_-5px_rgba(163,230,53,0.3)] border border-transparent transition-all duration-300"
-            custom={0}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(255, 255, 255, 0.3)" }}
-          >
-            <h3 className="text-2xl sm:text-3xl font-black text-[#050505] tracking-tight mb-8 uppercase">
-              Basic Features
-            </h3>
-            <motion.ul 
-              className="space-y-4 flex-1"
-              variants={listVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-            >
-              {basicFeatures.map((item, i) => (
-                <motion.li key={i} className="flex items-center text-[#050505] font-bold text-sm sm:text-base leading-tight" variants={itemVariants}>
-                  <div className="w-2 h-2 bg-[#050505] rounded-full mr-3 flex-shrink-0"></div>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
-          {/* Card 2: Technical Features (White) */}
-          <motion.div 
-            className="bg-white rounded-[2.5rem] p-8 sm:p-10 flex flex-col hover:shadow-2xl border border-transparent transition-all duration-300"
-            custom={1}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(163, 230, 53, 0.3)" }}
-          >
-            <h3 className="text-2xl sm:text-3xl font-black text-[#050505] tracking-tight mb-8 uppercase">
-              Technical Features
-            </h3>
-            <motion.ul 
-              className="space-y-4 flex-1"
-              variants={listVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-            >
-              {technicalFeatures.map((item, i) => (
-                <motion.li key={i} className="flex items-center text-[#050505]/80 font-bold text-sm sm:text-base leading-tight" variants={itemVariants}>
-                  <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
-          {/* Card 3: Support (White) */}
-          <motion.div 
-            className="bg-white rounded-[2.5rem] p-8 sm:p-10 flex flex-col hover:shadow-2xl border border-transparent transition-all duration-300"
-            custom={2}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            whileHover={{ y: -6, scale: 1.01, borderColor: "rgba(163, 230, 53, 0.3)" }}
-          >
-            <h3 className="text-2xl sm:text-3xl font-black text-[#050505] tracking-tight mb-8 uppercase">
-              Support
-            </h3>
-            <motion.ul 
-              className="space-y-4 flex-1"
-              variants={listVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-            >
-              {supportFeatures.map((item, i) => (
-                <motion.li key={i} className="flex items-center text-[#050505]/80 font-bold text-sm sm:text-base leading-tight" variants={itemVariants}>
-                  <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
-        </div>
+        {/* Balanced Capabilities Grid */}
+        <motion.div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16 sm:mb-24"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {capabilitiesList.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <motion.div
+                key={idx}
+                variants={cardVariants}
+                whileHover={{ y: -6, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-[#0c0c0e] border border-white/10 rounded-[2rem] p-6 sm:p-8 flex flex-col justify-between hover:border-primary/20 transition-all duration-300 shadow-xl"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mb-5">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-white font-extrabold text-base sm:text-lg mb-2 tracking-tight">
+                    {item.title}
+                  </h3>
+                  <p className="text-white/60 text-xs sm:text-sm leading-relaxed font-medium">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
         {/* Zephyr Footer Badge */}
         <motion.div 

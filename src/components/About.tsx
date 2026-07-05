@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Quote, Star } from "lucide-react";
 
 const statsContainerVariants = {
   hidden: { opacity: 0 },
@@ -289,6 +290,69 @@ const About = () => {
             </motion.div>
 
           </motion.div>
+
+          {/* Testimonials Sub-section */}
+          <div className="mt-32 mb-16 max-w-5xl mx-auto">
+            {/* Sub-heading */}
+            <div className="text-left mb-12">
+              <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase block mb-3">
+                Testimonials
+              </span>
+              <h3 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+                What Our Clients Say
+              </h3>
+            </div>
+
+            {/* Testimonials Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  quote: "Zephyr delivered beyond our expectations. The college fest website handled thousands of concurrent registrations smoothly, and the payment flow was flawless.",
+                  author: "Fest Coordinator",
+                  company: "Halcyon SIT",
+                  rating: 5
+                },
+                {
+                  quote: "Zephyr Web Studio built a cutting-edge, high-performance web portal for our robotics team. It has completely modernized our recruitment intake and showcases our achievements globally.",
+                  author: "Club Lead",
+                  company: "Soaring Eagles SIT",
+                  rating: 5
+                },
+                {
+                  quote: "The restaurant app has transformed how we manage orders and communicate with drivers. The push notifications and live tracking work seamlessly. Zephyr is our go-to digital partner.",
+                  author: "Operations Director",
+                  company: "Bites & Co.",
+                  rating: 5
+                }
+              ].map((t, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-[#0c0c0e] border border-white/10 rounded-[2rem] p-8 flex flex-col justify-between hover:border-primary/20 transition-all duration-300 shadow-xl"
+                >
+                  <div>
+                    <div className="flex items-center space-x-1 mb-6 text-primary">
+                      {[...Array(t.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-primary" />
+                      ))}
+                    </div>
+                    <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                    <p className="text-white/80 text-sm leading-relaxed mb-6 font-medium italic">
+                      "{t.quote}"
+                    </p>
+                  </div>
+                  <div className="border-t border-white/5 pt-4">
+                    <h4 className="text-white font-bold text-sm">{t.author}</h4>
+                    <span className="text-white/40 text-xs font-semibold uppercase tracking-wider">{t.company}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
           {/* Zephyr Footer Badge */}
           <motion.div 

@@ -59,11 +59,9 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-extrabold mb-6 uppercase tracking-wider text-white">Services</h3>
             <ul className="space-y-3 font-semibold text-sm sm:text-base">
-              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">Design & Branding</a></li>
-              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">Advertising & Ads</a></li>
-              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">Website Hosting</a></li>
-              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">UI/UX Design</a></li>
-              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">Digital Marketing</a></li>
+              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">Web Design</a></li>
+              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">Web Development</a></li>
+              <li><a href="#services" className="text-white/60 hover:text-primary transition-colors">App Development</a></li>
             </ul>
           </div>
 
@@ -74,6 +72,7 @@ const Footer = () => {
               <li><a href="#about" className="text-white/60 hover:text-primary transition-colors">About Us</a></li>
               <li><a href="#features" className="text-white/60 hover:text-primary transition-colors">Our Features</a></li>
               <li><a href="#portfolio" className="text-white/60 hover:text-primary transition-colors">Our Work</a></li>
+              <li><a href="#faq" className="text-white/60 hover:text-primary transition-colors">FAQs</a></li>
               <li><a href="#contact" className="text-white/60 hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -88,11 +87,19 @@ const Footer = () => {
                   forwork.zephyrwebstudio@gmail.com
                 </a>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:+917050218002" className="hover:text-primary transition-colors">
-                  +91 7050 218002
-                </a>
+              <div className="flex items-start space-x-3">
+                <Phone className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <div className="flex flex-col space-y-1">
+                  <a href="tel:+918549840238" className="hover:text-primary transition-colors">
+                    +91 85498 40238
+                  </a>
+                  <a href="tel:+917209333695" className="hover:text-primary transition-colors">
+                    +91 72093 33695
+                  </a>
+                  <a href="tel:+917050218002" className="hover:text-primary transition-colors">
+                    +91 7050 218002
+                  </a>
+                </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />

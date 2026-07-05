@@ -1,54 +1,29 @@
-import { Palette, Megaphone, Bookmark, Globe } from "lucide-react";
+import { Paintbrush, Code, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
+import RestaurantApp from '../assets/restaurant_app_mockup.png';
 
-const servicesList = [
+const capabilities = [
   {
-    icon: Palette,
-    title: "Design"
+    icon: Paintbrush,
+    title: "Web & UI/UX Design",
+    description: "We map out intuitive user experiences (UX), design clean interactive visual systems (UI), and establish style guides that ensure responsive accessibility across all screen sizes."
   },
   {
-    icon: Megaphone,
-    title: "Advertising"
+    icon: Code,
+    title: "Full-Stack Web Development",
+    description: "We build custom, high-speed websites, dashboards, and portals. Writing clean, semantic code in React, Next.js, and TypeScript, backed by scalable backend services."
   },
   {
-    icon: Bookmark,
-    title: "Branding"
-  },
-  {
-    icon: Globe,
-    title: "Digital Marketing"
+    icon: Smartphone,
+    title: "Mobile App Development",
+    description: "We engineer native-feeling cross-platform iOS & Android mobile applications. Equipping them with real-time tracking, hardware API integrations, local caching, and secure payment pipelines."
   }
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15
-    }
-  }
-};
 
 const Services = () => {
   return (
     <section id="services" className="py-24 bg-zephyr-texture relative overflow-hidden">
-      <div className="absolute inset-0 bg-black/40 pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-black/60 pointer-events-none z-0"></div>
 
       <div className="container-responsive relative z-10 px-4 sm:px-12 lg:px-20">
         
@@ -60,7 +35,7 @@ const Services = () => {
         </div>
 
         {/* Section Heading */}
-        <div className="text-left mb-8">
+        <div className="text-left mb-16">
           <div className="flex items-center flex-wrap">
             <motion.h2 
               className="text-5xl xs:text-6xl sm:text-8xl md:text-9xl font-black uppercase text-white tracking-tighter leading-none font-sans"
@@ -69,7 +44,7 @@ const Services = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              Our
+              What We
             </motion.h2>
             <motion.div 
               className="w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-primary flex items-center justify-center text-black ml-4 sm:ml-6 shadow-[0_0_20px_rgba(163,230,53,0.3)] cursor-pointer"
@@ -77,11 +52,11 @@ const Services = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ type: "spring", stiffness: 150, damping: 10, delay: 0.2 }}
-              whileHover={{ scale: 1.1, rotate: -45 }}
+              whileHover={{ scale: 1.1, rotate: 45 }}
               whileTap={{ scale: 0.9 }}
             >
               <svg className="w-5 h-5 sm:w-10 sm:h-10" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
               </svg>
             </motion.div>
           </div>
@@ -92,66 +67,84 @@ const Services = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           >
-            Services
+            Do
           </motion.h2>
         </div>
 
-        {/* Thin Separator Line */}
-        <motion.div 
-          className="border-t border-white/20 w-full my-6 sm:my-8"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          style={{ originX: 0 }}
-        />
+        {/* Unified Services Layout: 2 Columns */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-6xl mx-auto items-center">
+          
+          {/* Left Column: Capabilities List */}
+          <div className="lg:col-span-7 space-y-8 text-left">
+            <div className="mb-6">
+              <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase block mb-3">
+                Unified design & engineering
+              </span>
+              <p className="text-white/80 text-base sm:text-lg leading-relaxed font-medium">
+                We design and engineer bespoke web and mobile experiences. By unifying high-end visual aesthetics with robust full-stack development, we deliver cohesive digital systems that command attention and drive growth.
+              </p>
+            </div>
 
-        {/* "Work with us" Neon Bullet */}
-        <motion.div 
-          className="flex items-center space-x-3 mb-10 sm:mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-        >
-          <div className="w-3 h-3 rounded-full bg-primary animate-pulse shadow-[0_0_8px_#a3e635]"></div>
-          <span className="text-white/60 text-[10px] sm:text-sm tracking-widest uppercase font-semibold">
-            Work with us
-          </span>
-        </motion.div>
+            <div className="space-y-6">
+              {capabilities.map((cap, idx) => {
+                const Icon = cap.icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    className="flex items-start p-6 bg-[#0c0c0e]/80 border border-white/10 rounded-[2rem] hover:border-primary/20 transition-all duration-300 group"
+                  >
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary mr-5 flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="text-white font-extrabold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors uppercase tracking-tight">
+                        {cap.title}
+                      </h4>
+                      <p className="text-white/70 text-xs sm:text-sm leading-relaxed font-medium">
+                        {cap.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
 
-        {/* Services Grid (4 Cards) */}
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-        >
-          {servicesList.map((service, index) => {
-            const IconComponent = service.icon;
-            return (
-              <motion.div
-                key={index}
-                className="flex items-center p-6 sm:p-8 bg-white rounded-[2rem] hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] transition-all duration-300 group border border-transparent cursor-pointer"
-                variants={cardVariants}
-                whileHover={{ 
-                  scale: 1.03, 
-                  y: -5,
-                  borderColor: "rgba(163, 230, 53, 0.4)"
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#050505] flex items-center justify-center text-primary mr-5 sm:mr-6 flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
-                  <IconComponent className="w-6 h-6 sm:w-8 sm:h-8" />
+          {/* Right Column: High-Fidelity Mobile App Showcase */}
+          <div className="lg:col-span-5 flex justify-center relative">
+            {/* Background Glow */}
+            <div className="absolute w-72 h-72 bg-primary/10 rounded-full blur-[80px] -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+            
+            <motion.div 
+              className="relative max-w-[280px] sm:max-w-[320px] rounded-[3rem] p-3 bg-gradient-to-b from-white/15 via-white/5 to-white/0 border border-white/20 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)]"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 60, damping: 15, delay: 0.2 }}
+              whileHover={{ y: -6, rotate: 1 }}
+            >
+              {/* Sleek smartphone screen wrapper */}
+              <div className="relative overflow-hidden rounded-[2.5rem] bg-black aspect-[9/18.5] border border-white/10">
+                {/* Speaker grill / Notch */}
+                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-20 flex items-center justify-center">
+                  <div className="w-8 h-1 bg-white/20 rounded-full mb-0.5"></div>
                 </div>
-                <span className="text-xl sm:text-3xl font-extrabold text-[#050505] tracking-tight">
-                  {service.title}
-                </span>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+                
+                {/* Mockup image */}
+                <img 
+                  src={RestaurantApp} 
+                  alt="App interface mockup showing food delivery and order tracking" 
+                  className="w-full h-full object-cover filter brightness-[0.9] select-none"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
 
         {/* Zephyr Footer Badge */}
         <motion.div 
