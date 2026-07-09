@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zephyr Web Studio | Digital Pamphlet</title>
+  
+  <!-- Fonts (Matching the website) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Color variables from Zephyr's design system */
+    :root {
+      --primary: #a3e635; /* Neon lime green */
+      --background: #050505; /* Solid deep black */
+      --card-bg: #0c0c0e; /* Dark slate card */
+      --text: #ffffff;
+      --text-gray: #a3a3a3;
+      --border: rgba(255, 255, 255, 0.1);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 1rem;
+      background-image: radial-gradient(circle at 50% -20%, rgba(163, 230, 53, 0.08) 0%, transparent 60%);
+    }
+
+    /* Outer Pamphlet Container */
+    .pamphlet {
+      width: 100%;
+      max-width: 680px;
+      background-color: #000000;
+      border: 1px solid var(--border);
+      border-radius: 2.5rem;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pamphlet::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: var(--primary);
+    }
+
+    /* Top URL */
+    .top-meta {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-gray);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    /* Main Heading */
+    .heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .heading span.outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px #ffffff;
+    }
+
+    .heading span.highlight {
+      color: var(--primary);
+    }
+
+    .subheading {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 580px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .pamphlet {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* Individual Service Card */
+    .service-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .service-card:hover {
+      border-color: rgba(163, 230, 53, 0.3);
+    }
+
+    .check-icon {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .service-info h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .service-info p {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      line-height: 1.4;
+    }
+
+    /* Call to Action Button */
+    .cta-button {
+      display: block;
+      width: 100%;
+      background-color: var(--primary);
+      color: #000000;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.05rem;
+      padding: 1.2rem;
+      border-radius: 9999px;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 0 20px rgba(163, 230, 53, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 25px rgba(163, 230, 53, 0.35);
+    }
+
+    /* Footer Contact Block */
+    .contact-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      position: relative;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .icon-wrapper {
+      color: var(--primary);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .contact-text a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .contact-text a:hover {
+      color: var(--primary);
+    }
+
+    .contact-text span {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+    }
+
+    .support-badge {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="pamphlet">
+    <div class="top-meta">Zephyr Web Studio</div>
+    
+    <h1 class="heading">
+      Need a Website or<br>
+      Want to <span class="highlight">Grow</span> <span class="outline">Online?</span>
+    </h1>
+    
+    <p class="subheading">
+      Whether you are starting a new business or want to improve your online presence, we help you build, optimize, and scale with custom digital engineering.
+    </p>
+    
+    <!-- 8 Services Grid -->
+    <div class="services-grid">
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>AI Automation</h3>
+          <p>Streamline business workflows with custom AI model integrations.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>Custom Web Dev</h3>
+          <p>High-performance React, TypeScript & Next.js applications.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>WordPress Websites</h3>
+          <p>Custom-themed, speed-optimized sites with easy CMS backends.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>E-commerce Websites</h3>
+          <p>Bespoke digital storefronts, shopping carts, and payment setups.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>SEO & Local SEO</h3>
+          <p>Semantic markup structure engineered to rank highly on search engines.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>Google Profile SEO</h3>
+          <p>Optimization of Maps listings for maximum local lead conversion.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>Redesign & Maintenance</h3>
+          <p>Modern visual updates, layouts upgrades, and speed optimizations.</p>
+        </div>
+      </div>
+      
+      <div class="service-card">
+        <div class="check-icon">✓</div>
+        <div class="service-info">
+          <h3>Domain & Hosting Setup</h3>
+          <p>Cloud server configurations, database security, SSL, and domain links.</p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- CTA Button -->
+    <a href="mailto:forwork.zephyrwebstudio@gmail.com" class="cta-button">
+      📩 Send us a message to discuss your project!
+    </a>
+    
+    <!-- Footer Contact Card -->
+    <div class="contact-card">
+      
+      <div class="contact-row">
+        <div class="icon-wrapper">📞</div>
+        <div class="contact-text">
+          <a href="tel:+918549840238">+91 85498 40238</a>
+          <a href="tel:+917209333695">+91 72093 33695</a>
+          <a href="tel:+917050218002">+91 7050 218002</a>
+        </div>
+      </div>
+      
+      <div class="contact-row">
+        <div class="icon-wrapper">✉</div>
+        <div class="contact-text">
+          <a href="mailto:forwork.zephyrwebstudio@gmail.com">forwork.zephyrwebstudio@gmail.com</a>
+          <span>Official Inbox</span>
+        </div>
+      </div>
+      
+      <div class="contact-row">
+        <div class="icon-wrapper">📍</div>
+        <div class="contact-text">
+          <a href="#" onclick="return false;">Bangalore, India</a>
+          <span>Operational Hub</span>
+        </div>
+      </div>
+      
+      <div class="support-badge">
+        ⚡ 24 x 7 Support ⚡
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>
