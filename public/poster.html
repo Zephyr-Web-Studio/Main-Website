@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zephyr Web Studio | Agency Poster</title>
+  
+  <!-- Fonts (Matching the website) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Color variables from Zephyr's design system */
+    :root {
+      --primary: #a3e635; /* Neon lime green */
+      --background: #000000; /* Deep black */
+      --card-bg: #0c0c0e; /* Dark slate card */
+      --text: #ffffff;
+      --text-gray: #a3a3a3;
+      --border: rgba(255, 255, 255, 0.08);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #000000;
+      color: var(--text);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    /* Print Setup - Standard A4 Sizing (210mm x 297mm) */
+    .poster {
+      width: 210mm;
+      height: 297mm;
+      background-color: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      padding: 20mm 15mm;
+      box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.95);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-image: radial-gradient(circle at 50% 30%, rgba(163, 230, 53, 0.08) 0%, transparent 60%);
+    }
+
+    /* Glow effect around the center logo */
+    .glow-bg {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(163, 230, 53, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Logo Header */
+    .logo-header {
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Main Big Tagline */
+    .tagline-container {
+      z-index: 2;
+      text-align: center;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .tagline {
+      font-family: var(--font-display);
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .tagline.lime {
+      color: var(--primary);
+      text-shadow: 0 0 30px rgba(163, 230, 53, 0.25);
+    }
+
+    .tagline.outline {
+      color: transparent;
+      -webkit-text-stroke: 1.8px #ffffff;
+    }
+
+    .tagline.white {
+      color: #ffffff;
+    }
+
+    .slogan {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      color: var(--text-gray);
+      text-transform: uppercase;
+      margin-top: 1rem;
+    }
+
+    /* Services Grid Section */
+    .services-container {
+      width: 100%;
+      z-index: 2;
+      margin: 2.5rem 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .service-card {
+      background-color: rgba(12, 12, 14, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 1.2rem;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      transition: border-color 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .service-card:hover {
+      border-color: var(--primary);
+    }
+
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .service-desc {
+      font-size: 0.75rem;
+      color: var(--text-gray);
+      line-height: 1.4;
+    }
+
+    /* Bottom Contact block */
+    .contact-footer {
+      width: 100%;
+      z-index: 2;
+      border-top: 1px solid var(--border);
+      padding-top: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-details {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 90%;
+      gap: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .icon {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .c-txt {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .phone-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .web-link {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* Print styling override */
+    @media print {
+      body {
+        padding: 0;
+        background-color: #000000;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .poster {
+        width: 210mm;
+        height: 297mm;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 15mm 12mm;
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="poster">
+    <div class="glow-bg"></div>
+    
+    <!-- Header: Centered Logo -->
+    <div class="logo-header">
+      <img class="logo" src="/Zephyr.png" alt="Zephyr Web Studio Logo">
+    </div>
+    
+    <!-- Slogan & Slogan Headings -->
+    <div class="tagline-container">
+      <div class="tagline lime">Design.</div>
+      <div class="tagline white">Build.</div>
+      <div class="tagline outline">Scale.</div>
+      <div class="slogan">We Engineer Digital Boldness</div>
+    </div>
+    
+    <!-- Services Row (3 Columns) -->
+    <div class="services-container">
+      <div class="services-grid">
+        
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-title">Web Design</div>
+          <div class="service-desc">Custom responsive UI/UX mockups, visual wireframing & guidelines.</div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-title">Development</div>
+          <div class="service-desc">High-performance full-stack systems using React, TypeScript & AWS.</div>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-title">Mobile Apps</div>
+          <div class="service-desc">Agile cross-platform Android & iOS apps with real-time video/voice integrations.</div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <!-- Contact Info Block -->
+    <div class="contact-footer">
+      <div class="contact-details">
+        
+        <div class="contact-item">
+          <span class="icon">📞</span>
+          <div class="phone-stack">
+            <span class="c-txt">+91 85498 40238</span>
+            <span class="c-txt">+91 72093 33695</span>
+            <span class="c-txt">+91 7050 218002</span>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <span class="icon">✉</span>
+          <span class="c-txt">forwork.zephyrwebstudio@gmail.com</span>
+        </div>
+        
+        <div class="contact-item">
+          <span class="icon">📍</span>
+          <span class="c-txt">Bangalore, India</span>
+        </div>
+        
+      </div>
+      
+      <a href="https://www.zephyrwebstudio.dev" target="_blank" class="web-link">www.zephyrwebstudio.dev</a>
+    </div>
+    
+  </div>
+
+</body>
+</html>
